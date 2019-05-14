@@ -1,0 +1,14 @@
+{
+  "name": "deskpics-serverless",
+  "version": "1.0.0",
+  "description": "Serverless API and Client for Deskpics.",
+  "main": "index.js",
+  "repository": "https://github.com/serranoarevalo/deskpics-serverless",
+  "author": "Nicolás Serrano Arévalo <itnico.las.me@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.16.4",
+    "helmet": "^3.18.0"
+  }
+}
