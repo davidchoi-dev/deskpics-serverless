@@ -1,3 +1,4 @@
+const axios = require("axios");
 const app = require("../libs/app");
 
 const SLACK_TOKEN = process.env.SLACK_TOKEN;
@@ -28,9 +29,7 @@ app.post("*", async (req, res) => {
             profile: { real_name_normalized, email, image_original }
           } = data;
           const cleanedText = parsedText.substring(1, parsedText.length - 1);
-          const splittedTex = cleanedText.split("|");
-          const drinkName = splittedTex[0];
-          const location = splittedTex[1];
+          const [drinkName, location] = cleanedText.split("|");
 
           try {
             let dbUser = await User.findOne({ email });

@@ -1,6 +1,15 @@
 const express = require("express");
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
+const AWS = require("aws-sdk");
+
+AWS.config.update({
+  region: "ap-northeast-2",
+  credentials: {
+    accessKeyId: process.env.KEY_ID,
+    secretAccessKey: process.env.SECRET_KEY
+  }
+});
 
 const app = express();
 

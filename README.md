@@ -9,5 +9,5 @@ I want to stop spending money on servers and databases.
 ## Tech
 
 * Node
-* MongoDB
+* DynamoDB
 * AWS S3
