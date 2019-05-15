@@ -11,3 +11,4 @@ I want to stop spending money on servers and databases.
 * Node
 * DynamoDB
 * AWS S3
+* NextJS
