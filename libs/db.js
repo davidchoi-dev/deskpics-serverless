@@ -1,8 +1,9 @@
 const AWS = require("aws-sdk");
 
-const callDB = (action, params) => {
+export const callDB = (action, params) => {
   const db = new AWS.DynamoDB.DocumentClient();
   return db[action](params).promise();
 };
 
-module.exports = callDB;
+export const makeDbParams = paramsObj =>
+  Object.assign({ TableName: "Deskpics" }, paramsObj);
