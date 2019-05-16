@@ -3,20 +3,20 @@ const { callDB, makeDbParams } = require("../libs/db");
 
 app.get("*", async (req, res) => {
   const {
-    query: { id }
+    query: { lastPhotoId, lastUserId }
   } = req;
-  if (id === undefined) {
-    return;
-  }
   try {
     const result = await callDB(
-      "query",
+      "scan",
       makeDbParams({
-        IndexName: "photoId-index",
-        KeyConditionExpression: "photoId = :photoId",
-        ExpressionAttributeValues: {
-          ":photoId": id
-        }
+        Limit: 25,
+        ...(lastPhotoId &&
+          lastUserId && {
+            ExclusiveStartKey: {
+              photoId: lastPhotoId,
+              userId: lastUserId
+            }
+          })
       })
     );
     return res.json(result);
