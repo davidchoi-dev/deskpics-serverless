@@ -1,5 +1,5 @@
-const app = require("../libs/app");
-const { callDB, makeDbParams } = require("../libs/db");
+import app from "../libs/app";
+import { callDB, makeDbParams } from "../libs/db";
 
 app.get("*", async (req, res) => {
   const {
@@ -26,4 +26,4 @@ app.get("*", async (req, res) => {
   }
 });
 
-module.exports = app;
+export default app;

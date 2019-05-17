@@ -1,5 +1,5 @@
-const axios = require("axios");
-const app = require("../libs/app");
+import axios from "axios";
+import app from "../libs/app";
 
 const SLACK_TOKEN = process.env.SLACK_TOKEN;
 
