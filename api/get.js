@@ -6,7 +6,8 @@ app.get("*", async (req, res) => {
     query: { id }
   } = req;
   if (id === undefined) {
-    return;
+    res.status(400);
+    return res.end();
   }
   try {
     const result = await callDB(

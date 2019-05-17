@@ -1,5 +1,12 @@
-POST http://localhost:3000/blocks
+
+POST http://localhost:3000/api/create.js
+Content-Type: "application/json"
+
+{
+    "drink": "Americano",
+    "location": "Seoul"
+}
 
 ###
 
-GET http://localhost:3000/pic/1/
+GET http://localhost:3000/api/list.js

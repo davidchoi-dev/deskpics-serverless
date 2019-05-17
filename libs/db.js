@@ -6,4 +6,4 @@ export const callDB = (action, params) => {
 };
 
 export const makeDbParams = paramsObj =>
-  Object.assign({ TableName: "Deskpics" }, paramsObj);
+  Object.assign({ TableName: "deskpics" }, paramsObj);
