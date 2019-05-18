@@ -2,6 +2,8 @@ import express from "express";
 import helmet from "helmet";
 import bodyParser from "body-parser";
 import AWS from "aws-sdk";
+import "./db";
+import "../models/Pic";
 
 AWS.config.update({
   region: "ap-northeast-2",

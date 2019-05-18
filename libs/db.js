@@ -1,9 +1,12 @@
-import AWS from "aws-sdk";
+import mongoose from "mongoose";
+mongoose.Promise = global.Promise;
 
-export const callDB = (action, params) => {
-  const db = new AWS.DynamoDB.DocumentClient();
-  return db[action](params).promise();
+const connect = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
+  } catch (e) {
+    console.log(e);
+  }
 };
 
-export const makeDbParams = paramsObj =>
-  Object.assign({ TableName: "deskpics" }, paramsObj);
+connect();
