@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import AWS from "aws-sdk";
 import "./db";
 import "../models/Pic";
+import "../models/Drink";
 
 AWS.config.update({
   region: "ap-northeast-2",

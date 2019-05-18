@@ -1,5 +1,6 @@
 import axios from "axios";
 import app from "../libs/app";
+import Pic from "../models/Pic";
 
 const SLACK_TOKEN = process.env.SLACK_TOKEN;
 
@@ -32,20 +33,11 @@ app.post("*", async (req, res) => {
           const [drink, location] = cleanedText.split("|");
           try {
             const photoUrl = await cloudinaryUpload(files[0].url_private);
-            await callDB(
-              "put",
-              makeDbParams({
-                Item: {
-                  pk,
-                  sk: uuid(),
-                  name,
-                  drink,
-                  location,
-                  approved: true,
-                  photoUrl
-                }
-              })
-            );
+            await Pic.create({
+              photoUrl,
+              approved: true,
+              location
+            });
           } catch (error) {
             console.log(error);
           }
