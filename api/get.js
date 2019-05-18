@@ -1,5 +1,5 @@
 import app from "../libs/app";
-import { callDB, makeDbParams } from "../libs/db";
+import Pic from "../models/Pic";
 
 app.get("*", async (req, res) => {
   const {
@@ -10,17 +10,8 @@ app.get("*", async (req, res) => {
     return res.end();
   }
   try {
-    const result = await callDB(
-      "query",
-      makeDbParams({
-        IndexName: "photoId-index",
-        KeyConditionExpression: "photoId = :photoId",
-        ExpressionAttributeValues: {
-          ":photoId": id
-        }
-      })
-    );
-    return res.json(result);
+    const pic = await Pic.findById(id);
+    return res.json(pic);
   } catch (e) {
     console.log(e);
     return res.json({ error: e.message });
