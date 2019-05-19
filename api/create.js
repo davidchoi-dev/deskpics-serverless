@@ -1,6 +1,7 @@
 import axios from "axios";
 import app from "../libs/app";
 import Pic from "../models/Pic";
+import Drink from "../models/Drink";
 
 const SLACK_TOKEN = process.env.SLACK_TOKEN;
 
@@ -27,17 +28,23 @@ app.post("*", async (req, res) => {
         );
         if (ok) {
           const {
-            profile: { real_name_normalized: name, email: pk }
+            profile: { real_name_normalized: name, email }
           } = data;
           const cleanedText = parsedText.substring(1, parsedText.length - 1);
           const [drink, location] = cleanedText.split("|");
           try {
             const photoUrl = await cloudinaryUpload(files[0].url_private);
-            await Pic.create({
+            let dbDrink = await Drink.find({ name: drink });
+            if (!dbDrink) {
+              dbDrink = await Drink.create({ name: drink });
+            }
+            const pic = await Pic.create({
               photoUrl,
               approved: true,
-              location
+              location,
+              drink: dbDrink.id
             });
+            dbDrink.photos.push(pic.id);
           } catch (error) {
             console.log(error);
           }

@@ -4,8 +4,12 @@ const PicSchema = new mongoose.Schema({
   location: String,
   approved: Boolean,
   photoUrl: String,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  },
   drink: {
-    type: mongoose.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "Drink"
   },
   createdAt: {

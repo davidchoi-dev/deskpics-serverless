@@ -10,7 +10,7 @@ app.get("*", async (req, res) => {
     return res.end();
   }
   try {
-    const pic = await Pic.findById(id);
+    const pic = await Pic.findById(id).populate("user drink");
     return res.json(pic);
   } catch (e) {
     console.log(e);

@@ -5,6 +5,7 @@ import AWS from "aws-sdk";
 import "./db";
 import "../models/Pic";
 import "../models/Drink";
+import "../models/User";
 
 AWS.config.update({
   region: "ap-northeast-2",

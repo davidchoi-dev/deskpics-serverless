@@ -1,8 +1,7 @@
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
+  name: String,
   profilePhoto: String,
   email: {
     type: String,
@@ -10,7 +9,7 @@ const UserSchema = new mongoose.Schema({
   },
   photos: [
     {
-      type: mongoose.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Pic"
     }
   ],

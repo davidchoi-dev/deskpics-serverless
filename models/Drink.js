@@ -4,7 +4,7 @@ const DrinkSchema = new mongoose.Schema({
   name: String,
   photos: [
     {
-      type: mongoose.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Pic"
     }
   ],
